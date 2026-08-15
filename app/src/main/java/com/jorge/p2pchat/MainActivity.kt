@@ -8,17 +8,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.lifecycleScope
 import com.goterl.lazysodium.SodiumAndroid
 import com.jorge.p2pchat.crypto.NoiseXX
 import com.jorge.p2pchat.net.UdpTransport
 import kotlinx.coroutines.launch
 import java.net.InetAddress
 
-/**
- * Prueba de concepto mínima: escribe la IP del otro dispositivo (en la
- * misma red local) y prueba el handshake Noise + un mensaje de texto
- * cifrado. Es el punto de partida del roadmap, no la app final.
- */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +48,6 @@ class MainActivity : ComponentActivity() {
                                 val msg1 = noise.writeMessage1()
                                 transport.send(msg1, InetAddress.getByName(peerIp), 45454)
                                 log = "Mensaje 1 (e) enviado. Esperando respuesta..."
-                                // Los pasos 2 y 3 se completan escuchando transport.incoming
-                                // en un loop — se deja como siguiente iteración del skeleton.
                             } catch (e: Exception) {
                                 log = "Error: ${e.message}"
                             }

@@ -1,6 +1,5 @@
 package com.jorge.p2pchat.crypto
 
-import com.goterl.lazysodium.LazySodium
 import com.goterl.lazysodium.SodiumAndroid
 import com.goterl.lazysodium.utils.Key
 import java.security.SecureRandom
@@ -28,7 +27,6 @@ import java.security.SecureRandom
  */
 class NoiseXX(private val sodium: SodiumAndroid) {
 
-    private val lazySodium = LazySodium(sodium)
 
     data class KeyPair(val publicKey: ByteArray, val secretKey: ByteArray)
 
