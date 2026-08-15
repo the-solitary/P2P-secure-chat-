@@ -10,7 +10,7 @@
 
     <application
         android:allowBackup="false"
-        android:label="P2P Secure Chat"
+        android:label="P2P Secure Chat">
 
         <activity
             android:name=".MainActivity"
